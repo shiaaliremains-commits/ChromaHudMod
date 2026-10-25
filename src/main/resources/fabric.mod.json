@@ -1,0 +1,30 @@
+{
+    "schemaVersion": 1,
+    "id": "chromahud",
+    "version": "${version}",
+    "name": "ChromaHud",
+    "description": "Rainbow hotbar and XP bar - beautiful and elegant",
+    "authors": ["shiaaliremains-commits"],
+    "contact": {},
+    "license": "MIT",
+    "icon": "assets/chromahud/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "my.chromahud.Chromahud"
+        ],
+        "client": [
+            "my.chromahud.client.ChromahudClient"
+        ]
+    },
+    "mixins": [
+        "chromahud.mixins.json",
+        "chromahud.client.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.19.5",
+        "minecraft": ">=1.26.3",
+        "java": ">=25",
+        "fabric-api": "*"
+    }
+}
