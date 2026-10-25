@@ -8,22 +8,18 @@
     "contact": {},
     "license": "MIT",
     "icon": "assets/chromahud/icon.png",
-    "environment": "*",
+    "environment": "client",
     "entrypoints": {
-        "main": [
-            "my.chromahud.Chromahud"
-        ],
         "client": [
             "my.chromahud.client.ChromahudClient"
         ]
     },
     "mixins": [
-        "chromahud.mixins.json",
         "chromahud.client.mixins.json"
     ],
     "depends": {
         "fabricloader": ">=0.19.5",
-        "minecraft": ">=1.26.3",
+        "minecraft": "~26w18a",
         "java": ">=25",
         "fabric-api": "*"
     }
