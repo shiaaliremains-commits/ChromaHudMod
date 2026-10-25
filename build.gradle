@@ -1,5 +1,5 @@
 plugins {
-id 'fabric-loom' version "${loom_version}"
+id 'net.fabricmc.fabric-loom' version "${loom_version}"
 id 'maven-publish'
 }
 
@@ -26,16 +26,16 @@ mavenCentral()
 
 dependencies {
 minecraft "com.mojang:minecraft:${project.minecraft_version}"
-// هذا هو السطر السحري المطلوب لنسخ 26.x لاستخدام الأسماء الرسمية
-mappings loom.officialMojangMappings()
-modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 }
 
 processResources {
-inputs.property "version", project.version
+def version = project.version
+inputs.property "version", version
+
 filesMatching("fabric.mod.json") {
-expand "version": project.version
+expand "version": version
 }
 }
 
@@ -51,7 +51,10 @@ targetCompatibility = JavaVersion.VERSION_25
 }
 
 jar {
+def projectName = project.name
+inputs.property "projectName", projectName
+
 from("LICENSE") {
-rename { "${it}_${project.base.archivesName.get()}" }
+rename { "${it}_$projectName"}
 }
 }
